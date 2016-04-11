@@ -29,6 +29,8 @@ gem 'spring',        group: :development
 gem 'slim-rails'
 gem 'html2slim'
 
+gem 'omniauth', '~> 1.2.1'
+gem 'omniauth-twitter', '~> 1.0.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
