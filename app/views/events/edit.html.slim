@@ -1,15 +1,15 @@
 - now = Time.zone.now
 
 .page-header
-  h1 イベント作成
-    
+  h1 イベント情報編集
+  
 = form_for(@event, class: 'form-horizontal', role: 'form') do |f|
   - if @event.errors.any?
     .alert.alert-danger
       ul
       - @event.errors.full_messages.each do |msg|
         li = msg
-        
+
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control'
@@ -25,7 +25,10 @@
     div
       = f.datetime_select :end_time, start_year: now.year, end_year: now.year + 1
   .form-group
-    = f.label :content
+    = f.label ;content
     = f.text_area :content, class: 'form-control', row: 10
+  
+  = f.submit '更新', class: 'btn btn-default', date: { disable_with: '更新中・・・'}
     
-  = f.submit '作成', class: 'btn btn-default', data: { disable_with: '作成中・・・'}
+  
+    
