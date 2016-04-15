@@ -4,13 +4,19 @@
 
 .row
   .col-md-8
+    - if @event.event_image?
+      .thumbnail
+        = image_tag @event.event_image.url
     .panel.panel-default
       .panel-heading
         | 主催者
       .panel-body
-        = link_to("https://twitter.com/#{@event.owner.nickname}") do
-          = image_tag @event.owner.image_url
-          = "@#{@event.owner.nickname}"
+        - if @event.owner
+          = link_to("https://twitter.com/#{@event.owner.nickname}") do
+            = image_tag @event.owner.image_url
+            = "@#{@event.owner.nickname}"
+        - else
+          | 退会したユーザです
           
     .panel.panel-default
       .panel-heading
@@ -63,11 +69,14 @@
         .panel-body
           .list-unstyled
             - @tickets.each do |ticket|
-              li
-                = link_to(url_for_twitter(ticket.user)) do
-                  = image_tag ticket.user.image_url, width: 20, height: 20
-                  = "@#{ticket.user.nickname}"
-                = ticket.comment
+              - if ticket.user
+                li
+                  = link_to(url_for_twitter(ticket.user)) do
+                    = image_tag ticket.user.image_url, width: 20, height: 20
+                    = "@#{ticket.user.nickname}"
+                  = ticket.comment
+              - else
+                | 退会したユーザです
             
     
 
