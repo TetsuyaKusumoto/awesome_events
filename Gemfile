@@ -41,11 +41,14 @@ gem 'mini_magick', '~> 3.7.0'
 group :development, :test do
   gem 'rspec-rails', '3.0.0'
   gem 'factory_girl_rails', '~> 4.4.1'
+  gem 'rspec', '3.0.0'
 end
 
 group :test do
   gem 'shoulda-matchers', '~> 2.6.0'
   gem 'capybara', '~> 2.2.1'
+  gem 'poltergeist'
+  gem 'database_cleaner', '~> 1.2.0'
 end
 
 # Use ActiveModel has_secure_password
